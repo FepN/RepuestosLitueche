@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+<title>Quick & Easy Form Validation Example with Parsley.js</title>
+		
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		
+<style type="text/css">
+		
+.wrapper{
+	//padding-top: 20px;
+	padding-top: 50px;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {    
+    border-color:#843534;
+    box-shadow: none;
+}
+
+
+input.parsley-error:focus,
+select.parsley-error:focus,
+textarea.parsley-error:focus {    
+    border-color:#843534;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483
+}
+
+
+.parsley-errors-list {
+    list-style-type: none;
+    opacity: 0;
+    transition: all .3s ease-in;
+
+    color: #d16e6c;
+    margin-top: 5px;
+    margin-bottom: 0;
+  padding-left: 0;
+}
+
+.parsley-errors-list.filled {
+    opacity: 1;
+    color: #a94442;
+}
+
+		</style>
+		
+	</head>
+	<body>
+	
+	
+	<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.codingcage.com">Coding Cage</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="http://www.codingcage.com/2016/09/quick-easy-form-validation-example-with.html">Back to Article</a></li>
+            <li><a href="http://www.codingcage.com/search/label/jQuery">jQuery</a></li>
+            <li><a href="http://www.codingcage.com/search/label/PHP">PHP</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+		<div class="wrapper">
+	
+		<div class="container">
+			<!--
+			<div class="col-lg-3">
+			pp	
+			</div>
+			-->
+			<div class="col-lg-12">
+				<form method="post" class="form-horizontal">
+					
+					<div class="form-group">
+					<label class="col-sm-3 control-label">Alphabets</label>
+					<div class="col-sm-6">
+					<input type="text" class="form-control" required data-parsley-pattern="^[a-zA-Z ]+$" placeholder="Type something" />
+					</div>
+					</div>
+												
+												
+					<div class="form-group">
+					<label class="col-sm-3 control-label">Equal To</label>
+					<div class="col-sm-3">
+					<input type="password" id="pass2" class="form-control" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup" placeholder="Password" />			</div>
+					<div class="col-sm-3">
+					<input type="password" class="form-control" required data-parsley-equalto="#pass2" data-parsley-trigger="keyup" placeholder="Re-Type Password" />				</div>
+	                </div>
+												
+					<div class="form-group">
+					<label class="col-sm-3 control-label">E-Mail</label>
+					<div class="col-sm-6">
+					<input type="email" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" placeholder="Enter a valid e-mail" />				</div>
+					</div>
+					
+					<div class="form-group">
+					<label class="col-sm-3 control-label">URL</label>
+					<div class="col-sm-6">
+					<input type="url" class="form-control" required data-parsley-type="url" placeholder="URL" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label class="col-sm-3 control-label">Number</label>
+					<div class="col-sm-6">
+					<input type="text" class="form-control" required data-parsley-type="number" placeholder="Enter only numbers" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label class="col-sm-3 control-label">Alphanumeric</label>
+					<div class="col-sm-6">
+					<input type="text" class="form-control" required data-parsley-type="alphanum" placeholder="Enter alphanumeric value" />
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label class="col-sm-3 control-label">Select Box</label>
+					<div class="col-sm-6">
+					<select class="form-control" required>
+						<option value="" selected="selected"> - Select - </option>
+						<option>First Value</option>
+						<option>Second Value</option>
+						<option>Third Value</option>
+						<option>Fourth Value</option>
+					</select>
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<label class="col-sm-3 control-label">Textarea</label>
+					<div class="col-sm-6">
+					<textarea required class="form-control"></textarea>
+					</div>
+					</div>
+					
+					<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-9 m-t-15">
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="reset" class="btn btn-default m-l-5">Cancel</button>
+					</div>
+					</div>
+					
+				</form>
+			</div>
+			
+			<!--
+			<div class="col-lg-4">
+				pp
+			</div>
+			-->
+		</div>
+		
+		
+		</div>
+											
+										
+<script src="jquery-1.12.4-jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script src="parsleyjs/dist/parsley.min.js"></script>
+	
+<script>
+$(document).ready(function(){
+	$('form').parsley();
+});
+</script>
+
+		
+	</body>
+</html>
